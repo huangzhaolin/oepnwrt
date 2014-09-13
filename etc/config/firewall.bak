@@ -1,4 +1,3 @@
-
 config defaults
 	option syn_flood '1'
 	option input 'ACCEPT'
@@ -15,24 +14,19 @@ config zone
 config zone
 	option name 'wan'
 	option output 'ACCEPT'
-	option masq '1'
-	option mtu_fix '1'
 	option input 'ACCEPT'
 	option forward 'ACCEPT'
 	option network 'wan devel'
 
 config zone
 	option name 'vpn'
-	option output 'ACCEPT'
-	option masq '1'
-	option mtu_fix '1'
 	option input 'ACCEPT'
-	option forward 'ACCEPT'
-	option network 'vpn' 
+	option output 'ACCEPT'
+	option forward 'REJECT'
 
 config rule
 	option name 'Allow-DHCP-Renew'
-	option src 'wan vpn'
+	option src 'wan'
 	option proto 'udp'
 	option dest_port '68'
 	option target 'ACCEPT'
@@ -48,7 +42,7 @@ config rule
 
 config rule
 	option name 'Allow-DHCPv6'
-	option src 'wan vpn'
+	option src 'wan'
 	option proto 'udp'
 	option src_ip 'fe80::/10'
 	option src_port '547'
@@ -59,7 +53,7 @@ config rule
 
 config rule
 	option name 'Allow-ICMPv6-Input'
-	option src 'wan vpn'
+	option src 'wan'
 	option proto 'icmp'
 	list icmp_type 'echo-request'
 	list icmp_type 'echo-reply'
@@ -78,7 +72,7 @@ config rule
 
 config rule
 	option name 'Allow-ICMPv6-Forward'
-	option src 'wan vpn'
+	option src 'wan'
 	option dest '*'
 	option proto 'icmp'
 	list icmp_type 'echo-request'
@@ -100,6 +94,15 @@ config forwarding
 	option src 'lan'
 
 config forwarding
+	option src 'vpn'
+	option dest 'lan'
+
+config forwarding
+	option src 'wan'
+	option dest 'vpn'
+
+config forwarding
+	option src 'vpn'
 	option dest 'wan'
 
 config zone

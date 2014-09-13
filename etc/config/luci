@@ -1,8 +1,8 @@
 
 config core 'main'
-	option lang 'auto'
-	option mediaurlbase '/luci-static/openwrt.org'
 	option resourcebase '/luci-static/resources'
+	option mediaurlbase '/luci-static/bootstrap'
+	option lang 'zh_cn'
 
 config extern 'flash_keep'
 	option uci '/etc/config/'
@@ -14,6 +14,7 @@ config extern 'flash_keep'
 	option uploads '/lib/uci/upload/'
 
 config internal 'languages'
+	option zh_cn 'chinese'
 
 config internal 'sauth'
 	option sessionpath '/tmp/luci-sessions'

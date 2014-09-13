@@ -20,14 +20,15 @@ config wifi-iface
 	option encryption 'psk2'
 	option key '85527193'
 	option wds '1'
-        option mode 'sta'
+	option mode 'sta'
 
 config wifi-iface
 	option device 'radio0'
-	option network 'lan'
 	option mode 'ap'
 	option ssid 'my-devel'
 	option encryption 'psk2'
 	option key '85527193'
 	option disabled '0'
+	option network 'lan'
+	option dns '10.65.0.2'
 

@@ -31,5 +31,6 @@ config interface 'devel'
 	option proto 'dhcp'
 
 config interface 'vpn'
-  option ifname tun0
-  option proto none
+	option ifname 'tun0'
+	option proto 'none'
+
