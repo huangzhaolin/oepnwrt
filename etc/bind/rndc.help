@@ -1,0 +1,83 @@
+rndc: invalid argument --
+Usage: rndc [-b address] [-c config] [-s server] [-p port]
+	[-k key-file ] [-y key] [-V] command
+
+command is one of the following:
+
+  reload	Reload configuration file and zones.
+  reload zone [class [view]]
+		Reload a single zone.
+  refresh zone [class [view]]
+		Schedule immediate maintenance for a zone.
+  retransfer zone [class [view]]
+		Retransfer a single zone without checking serial number.
+  freeze	Suspend updates to all dynamic zones.
+  freeze zone [class [view]]
+		Suspend updates to a dynamic zone.
+  thaw		Enable updates to all dynamic zones and reload them.
+  thaw zone [class [view]]
+		Enable updates to a frozen dynamic zone and reload it.
+  sync [-clean]	Dump changes to all dynamic zones to disk, and optionally
+		remove their journal files.
+  sync [-clean] zone [class [view]]
+		Dump a single zone's changes to disk, and optionally
+		remove its journal file.
+  notify zone [class [view]]
+		Resend NOTIFY messages for the zone.
+  reconfig	Reload configuration file and new zones only.
+  sign zone [class [view]]
+		Update zone keys, and sign as needed.
+  loadkeys zone [class [view]]
+		Update keys without signing immediately.
+  stats		Write server statistics to the statistics file.
+  querylog newstate
+		Enable / disable query logging.
+  dumpdb [-all|-cache|-zones] [view ...]
+		Dump cache(s) to the dump file (named_dump.db).
+  secroots [view ...]
+		Write security roots to the secroots file.
+  stop		Save pending updates to master files and stop the server.
+  stop -p	Save pending updates to master files and stop the server
+		reporting process id.
+  halt		Stop the server without saving pending updates.
+  halt -p	Stop the server without saving pending updates reporting
+		process id.
+  trace		Increment debugging level by one.
+  trace level	Change the debugging level.
+  notrace	Set debugging level to 0.
+  flush 	Flushes all of the server's caches.
+  flush [view]	Flushes the server's cache for a view.
+  flushname name [view]
+		Flush the given name from the server's cache(s)
+  flushtree name [view]
+		Flush all names under the given name from the server's cache(s)
+  status	Display status of the server.
+  recursing	Dump the queries that are currently recursing (named.recursing)
+  tsig-list	List all currently active TSIG keys, including both statically
+		configured and TKEY-negotiated keys.
+  tsig-delete keyname [view]	
+		Delete a TKEY-negotiated TSIG key.
+  validation newstate [view]
+		Enable / disable DNSSEC validation.
+  addzone ["file"] zone [class [view]] { zone-options }
+		Add zone to given view. Requires new-zone-file option.
+  delzone ["file"] zone [class [view]]
+		Removes zone from given view. Requires new-zone-file option.
+  signing -list zone [class [view]]
+		List the private records showing the state of DNSSEC
+		signing in the given zone.
+  signing -clear <keyid>/<algorithm> zone [class [view]]
+		Remove the private record that indicating the given key
+		has finished signing the given zone.
+  signing -clear all zone [class [view]]
+		Remove the private records for all keys that have
+		finished signing the given zone.
+  signing -nsec3param none zone [class [view]]
+		Remove NSEC3 chains from zone.
+  signing -nsec3param hash flags iterations salt zone [class [view]]
+		Add NSEC3 chain to zone if already signed.
+		Prime zone with NSEC3 chain if not yet signed.
+  *restart	Restart the server.
+
+* == not yet implemented
+Version: 9.9.5-P1
